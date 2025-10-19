@@ -18,55 +18,57 @@
     <!-- Belangrijk: mountpunt voor de CMS-app -->
     <div id="nc-root"></div>
 
-    <script>
-      // Na login pagina opnieuw laden
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => location.reload());
-          }
-        });
+<script>
+  // Na login pagina opnieuw laden
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => location.reload());
       }
+    });
+  }
 
-      // Wacht tot DOM en decap-cms klaar zijn, dán initialiseren
-      function startCMS() {
-        if (window.initCMS && document.getElementById("nc-root")) {
-          window.initCMS({
-            config: {
-              backend: { name: "git-gateway", branch: "main" },
-              media_folder: "images",
-              public_folder: "/images",
-              collections: [
+  // Handmatige init: wacht tot DOM en de Decap-bundle klaar zijn
+  function startCMS() {
+    // Moet zowel de container als de globale CMS hebben
+    if (document.getElementById("nc-root") && window.CMS && typeof window.CMS.init === "function") {
+      window.CMS.init({
+        load_config_file: false, // gebruik NIET config.yml, we geven config inline
+        config: {
+          backend: { name: "git-gateway", branch: "main" },
+          media_folder: "images",
+          public_folder: "/images",
+          collections: [
+            {
+              name: "settings",
+              label: "Site instellingen",
+              files: [
                 {
-                  name: "settings",
-                  label: "Site instellingen",
-                  files: [
-                    {
-                      file: "data/site.json",
-                      label: "Site",
-                      name: "site",
-                      format: "json",
-                      fields: [
-                        { label: "Merknaam", name: "brand", widget: "string", required: false },
-                        { label: "E-mail (website)", name: "contactEmail", widget: "string", required: false },
-                        { label: "Primaire domein", name: "primaryDomain", widget: "string", required: false }
-                      ]
-                    }
+                  file: "data/site.json",
+                  label: "Site",
+                  name: "site",
+                  format: "json",
+                  fields: [
+                    { label: "Merknaam", name: "brand", widget: "string", required: false },
+                    { label: "E-mail (website)", name: "contactEmail", widget: "string", required: false },
+                    { label: "Primaire domein", name: "primaryDomain", widget: "string", required: false }
                   ]
                 }
               ]
             }
-          });
-        } else {
-          setTimeout(startCMS, 50);
+          ]
         }
-      }
+      });
+      return;
+    }
+    setTimeout(startCMS, 50);
+  }
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", startCMS);
-      } else {
-        startCMS();
-      }
-    </script>
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startCMS);
+  } else {
+    startCMS();
+  }
+</script>
   </body>
 </html>
