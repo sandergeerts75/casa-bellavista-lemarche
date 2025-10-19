@@ -6,80 +6,14 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "content"
-    label: "Website-inhoud"
+  - name: "settings"
+    label: "Site instellingen"
     files:
       - file: "data/site.json"
-        label: "Algemene inhoud"
-        name: "sitejson"
+        label: "Site"
+        name: "site"
         format: "json"
         fields:
-          - label: "Site"
-            name: "site"
-            widget: "object"
-            fields:
-              - { label: "Merknaam", name: "brand", widget: "string" }
-              - { label: "Primaire domein", name: "primaryDomain", widget: "string" }
-              - { label: "Telefoon", name: "contactPhone", widget: "string", required: false }
-              - { label: "E-mail (website)", name: "contactEmail", widget: "string" }
-              - { label: "Doorsturen naar", name: "forwardTo", widget: "string" }
-              - { label: "Adres", name: "address", widget: "text" }
-
-          - label: "Hero"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Badge", name: "badge", widget: "string" }
-              - { label: "Hero titel", name: "title", widget: "string" }
-              - { label: "Intro", name: "intro", widget: "text" }
-              - { label: "Hero afbeelding", name: "heroImage", widget: "image" }
-
-          - label: "Features"
-            name: "features"
-            widget: "object"
-            fields:
-              - label: "Slaapkamers"
-                name: "slaapkamers"
-                widget: "list"
-                field: { label: "Punt", name: "item", widget: "string" }
-              - label: "Buiten"
-                name: "buiten"
-                widget: "list"
-                field: { label: "Punt", name: "item", widget: "string" }
-              - label: "Praktisch"
-                name: "praktisch"
-                widget: "list"
-                field: { label: "Punt", name: "item", widget: "string" }
-
-          - label: "Galerij"
-            name: "gallery"
-            widget: "list"
-            fields:
-              - { label: "Afbeelding", name: "src", widget: "image" }
-              - { label: "Alt-tekst", name: "alt", widget: "string" }
-
-          - label: "Omgeving"
-            name: "omgeving"
-            widget: "object"
-            fields:
-              - { label: "Intro", name: "intro", widget: "text" }
-              - label: "Punten"
-                name: "punten"
-                widget: "list"
-                field: { label: "Punt", name: "item", widget: "string" }
-              - { label: "Google Maps embed URL", name: "mapsEmbed", widget: "string" }
-
-          - label: "Prijzen"
-            name: "prijzen"
-            widget: "object"
-            fields:
-              - label: "Regels"
-                name: "regels"
-                widget: "list"
-                field: { label: "Regel", name: "item", widget: "string" }
-              - { label: "Prijsnotitie", name: "note", widget: "string" }
-
-          - label: "Huisregels"
-            name: "huisregels"
-            widget: "list"
-            field: { label: "Regel", name: "item", widget: "string" }
+          - { label: "Merknaam", name: "brand", widget: "string", required: false }
+          - { label: "E-mail (website)", name: "contactEmail", widget: "string", required: false }
+          - { label: "Primaire domein", name: "primaryDomain", widget: "string", required: false }
