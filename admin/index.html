@@ -5,24 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Beheer – Casa Bellavista</title>
 
-    <!-- Netlify Identity widget (voor login & wachtwoord reset) -->
+    <!-- Netlify Identity (login) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <!-- Decap CMS -->
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <!-- Zeg tegen Decap dat we handmatig initialiseren -->
+    <script>window.CMS_MANUAL_INIT = true;</script>
   </head>
   <body>
     <script>
-      // Zorg dat na login automatisch wordt herladen
+      // Na login pagina opnieuw laden
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.reload();
-            });
+            window.netlifyIdentity.on("login", () => location.reload());
           }
         });
       }
+
+      // **INLINE CONFIG** (om config.yml te omzeilen)
+      CMS.init({
+        config: {
+          backend: { name: "git-gateway", branch: "main" },
+          media_folder: "images",
+          public_folder: "/images",
+          collections: [
+            {
+              name: "settings",
+              label: "Site instellingen",
+              files: [
+                {
+                  file: "data/site.json",
+                  label: "Site",
+                  name: "site",
+                  format: "json",
+                  fields: [
+                    { label: "Merknaam", name: "brand", widget: "string", required: false },
+                    { label: "E-mail (website)", name: "contactEmail", widget: "string", required: false },
+                    { label: "Primaire domein", name: "primaryDomain", widget: "string", required: false }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      });
     </script>
   </body>
 </html>
