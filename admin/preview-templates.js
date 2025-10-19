@@ -6,7 +6,7 @@
 
   // 👉 Gebruik (een van) je live CSS-bestanden voor correcte opmaak in de preview.
   //   Pas het pad hieronder aan naar jouw CSS-bestand (bijv. "/style.css" of "/assets/main.css").
-  CMS.registerPreviewStyle('/style.css');
+ CMS.registerPreviewStyle('', { raw: true });
 
   // Kleine basis-styles (fallback) voor de preview
   CMS.registerPreviewStyle(`
