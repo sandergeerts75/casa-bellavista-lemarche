@@ -1,0 +1,82 @@
+{
+  "site": {
+    "brand": "Casa Bellavista",
+    "primaryDomain": "www.casa-bellavista.nl",
+    "contactPhone": "+31 6 12345678",
+    "contactEmail": "info@casa-bellavista.nl",
+    "forwardTo": "vincent.geerts@googlemail.com",
+    "address": "Belvedere Ostrenze\nLe Marche, Italië"
+  },
+  "hero": {
+    "badge": "Nieuw: groot zwembad",
+    "title": "Ruim vakantiehuis in Belvedere Ostrenze",
+    "intro": "Vrij gelegen huis met vijf slaapkamers, een gloednieuw zwembad en volop privacy. Het strand ligt op slechts 15–20 minuten rijden.",
+    "heroImage": "images/hero.jpg"
+  },
+  "features": {
+    "slaapkamers": [
+      "5 ruime slaapkamers",
+      "Comfortabele boxsprings",
+      "Airco aanwezig"
+    ],
+    "buiten": [
+      "Nieuw zwembad",
+      "Terras en ligstoelen",
+      "Panoramisch uitzicht"
+    ],
+    "praktisch": [
+      "Wasmachine & vaatwasser",
+      "Gratis Wi‑Fi",
+      "Privé parkeerplaats"
+    ]
+  },
+  "gallery": [
+    {
+      "src": "images/foto1.jpg",
+      "alt": "Zwembad"
+    },
+    {
+      "src": "images/foto2.jpg",
+      "alt": "Slaapkamer"
+    },
+    {
+      "src": "images/foto3.jpg",
+      "alt": "Woonkamer"
+    },
+    {
+      "src": "images/foto4.jpg",
+      "alt": "Keuken"
+    },
+    {
+      "src": "images/foto5.jpg",
+      "alt": "Badkamer"
+    },
+    {
+      "src": "images/foto6.jpg",
+      "alt": "Uitzicht"
+    }
+  ],
+  "omgeving": {
+    "intro": "Belvedere Ostrenze ligt midden in de glooiende heuvels van Le Marche.",
+    "punten": [
+      "Strand: 15–20 minuten rijden",
+      "Supermarkt en restaurants binnen 5 minuten",
+      "Historische stadjes en wandelroutes dichtbij"
+    ],
+    "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.0!2d13.0!3d43.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDMwJzAwLjAiTiAxM8KwMDAnMDAuMCJF!5e0!3m2!1snl!2snl!4v0000000000"
+  },
+  "prijzen": {
+    "regels": [
+      "Laagseizoen: € 250",
+      "Middenseizoen: € 300",
+      "Hoogseizoen: € 400"
+    ],
+    "note": "Toeristenbelasting en eindschoonmaak niet inbegrepen. Minimumverblijf: 5 nachten."
+  },
+  "huisregels": [
+    "Check‑in vanaf 15:00, check‑out tot 10:00",
+    "Niet roken binnen",
+    "Huisdieren in overleg",
+    "Geen feesten of evenementen"
+  ]
+}

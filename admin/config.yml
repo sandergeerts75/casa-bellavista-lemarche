@@ -1,0 +1,64 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site"
+    label: "Website-inhoud"
+    files:
+      - file: "data/site.json"
+        label: "Algemene inhoud"
+        name: "sitejson"
+        fields:
+          - {label: "Merknaam", name: "site.brand", widget: "string"}
+          - {label: "Primaire domein", name: "site.primaryDomain", widget: "string"}
+          - {label: "Telefoon", name: "site.contactPhone", widget: "string", required: false}
+          - {label: "E‑mail (website)", name: "site.contactEmail", widget: "string"}
+          - {label: "Doorsturen naar", name: "site.forwardTo", widget: "string"}
+          - {label: "Adres", name: "site.address", widget: "text"}
+
+          - {label: "Badge", name: "hero.badge", widget: "string"}
+          - {label: "Hero titel", name: "hero.title", widget: "string"}
+          - {label: "Intro", name: "hero.intro", widget: "text"}
+          - {label: "Hero afbeelding", name: "hero.heroImage", widget: "image"}
+
+          - label: "Features: slaapkamers"
+            name: "features.slaapkamers"
+            widget: "list"
+            field: {label: Punt, name: item, widget: string}
+          - label: "Features: buiten"
+            name: "features.buiten"
+            widget: "list"
+            field: {label: Punt, name: item, widget: string}
+          - label: "Features: praktisch"
+            name: "features.praktisch"
+            widget: "list"
+            field: {label: Punt, name: item, widget: string}
+
+          - label: "Galerij"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - {label: "Afbeelding", name: "src", widget: "image"}
+              - {label: "Alt-tekst", name: "alt", widget: "string"}
+
+          - {label: "Omgeving intro", name: "omgeving.intro", widget: "text"}
+          - label: "Omgeving punten"
+            name: "omgeving.punten"
+            widget: "list"
+            field: {label: Punt, name: item, widget: string}
+          - {label: "Google Maps embed URL", name: "omgeving.mapsEmbed", widget: "string"}
+
+          - label: "Prijzen"
+            name: "prijzen.regels"
+            widget: "list"
+            field: {label: Regel, name: item, widget: string}
+          - {label: "Prijsnotitie", name: "prijzen.note", widget: "string"}
+
+          - label: "Huisregels"
+            name: "huisregels"
+            widget: "list"
+            field: {label: Regel, name: item, widget: "string"}

@@ -1,0 +1,60 @@
+<!doctype html><html lang="nl"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Casa Bellavista – Belvedere Ostrenze, Italië</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#f9f3ec;--fg:#2b2a28;--muted:#6b675f;--brand:#a05e3b;--brand-2:#814a2d;--card:#fffaf4;--ring:#e9c5a6;--sand:#f5eadf;--shadow:0 18px 36px rgba(160,94,59,.12)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 20% 0%, var(--sand), transparent),linear-gradient(180deg, var(--bg) 0%, #fff 40%, var(--bg) 100%);color:var(--fg);font:16px/1.65 Inter,system-ui}
+h1,h2,h3{font-family:'Playfair Display',serif}.container{width:min(1100px,92%);margin-inline:auto}
+header{position:sticky;top:0;background:rgba(255,245,235,.75);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid rgba(160,94,59,.12);z-index:40}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}.menu{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;gap:8px;background:var(--brand);color:#fff;padding:12px 18px;border-radius:999px;border:0;font-weight:700;box-shadow:var(--shadow)}.btn:hover{background:var(--brand-2)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:56px 0}
+.badge{display:inline-block;background:var(--sand);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--brand);margin-bottom:10px}
+.card{background:var(--card);padding:18px;border-radius:18px;box-shadow:var(--shadow);border:1px solid rgba(160,94,59,.12)}
+.grid{display:grid;gap:18px}.g-3{grid-template-columns:repeat(3,1fr)}.g-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.g-3{grid-template-columns:1fr 1fr}.g-2{grid-template-columns:1fr}.hero .wrap{grid-template-columns:1fr}}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}.gallery img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.map{position:relative;padding-top:56%;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.footer{border-top:1px solid rgba(43,42,40,.1);padding:26px 0;color:#6b675f}.small{font-size:14px;color:#6b675f}
+</style></head><body>
+<header><div class="container nav"><div class="brand"><strong id="brand">Casa Bellavista</strong></div>
+<nav class="menu"><a href="#huis">Het huis</a><a href="#fotos">Foto's</a><a href="#omgeving">Omgeving</a><a href="#prijzen">Prijzen</a><a href="#contact">Contact</a><a class="btn" href="#boek">Beschikbaarheid</a></nav>
+</div></header>
+<main class="hero"><div class="container wrap"><div><span class="badge" id="hero-badge"></span><h1 id="hero-title"></h1><p class="lead" id="hero-intro"></p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px"><a class="btn" href="#boek">Check beschikbaarheid</a><a class="btn" href="#fotos" style="background:transparent;color:var(--brand);border:2px solid var(--brand)">Bekijk foto's</a></div>
+</div><div class="card" style="padding:0;overflow:hidden"><img id="hero-image" src="" alt="Hero"></div></div></main>
+<div class="container card" id="boek"><form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+<input type="hidden" name="form-name" value="booking"><p style="display:none"><label>Laat dit leeg: <input name="bot-field"></label></p>
+<div class="grid" style="grid-template-columns:repeat(4,1fr);gap:12px"><input type="date" name="start" required><input type="date" name="end" required>
+<select name="guests"><option>4 gasten</option><option>6 gasten</option><option>8 gasten</option><option>10 gasten</option></select>
+<select name="flex"><option>Flexibel: ±3 dagen</option><option>Nauwkeurig</option></select></div>
+<div style="margin-top:10px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn" type="submit">Vraag beschikbaarheid aan</button><span class="small">We reageren doorgaans binnen 24 uur.</span></div>
+</form></div>
+<section id="huis" class="container"><h2>Het huis</h2><div class="grid g-3"><div class="card"><h3>Slapen</h3><ul id="feat-slaapkamers"></ul></div><div class="card"><h3>Buiten</h3><ul id="feat-buiten"></ul></div><div class="card"><h3>Praktisch</h3><ul id="feat-praktisch"></ul></div></div></section>
+<section id="fotos" class="container"><h2>Foto's</h2><div class="gallery" id="gallery"></div></section>
+<section id="omgeving" class="container"><h2>Omgeving</h2><p id="omgeving-intro"></p><ul id="omgeving-punten"></ul><div class="map"><iframe id="map-embed"></iframe></div></section>
+<section id="prijzen" class="container"><h2>Prijzen</h2><div class="grid g-2"><div class="card"><h3>Indicatieve prijzen per nacht</h3><ul id="prijzen-lijst"></ul><p class="small" id="prijzen-note"></p></div><div class="card"><h3>Huisregels</h3><ul id="huisregels"></ul></div></div></section>
+<section id="contact" class="container"><h2>Contact</h2><div class="grid g-2"><div class="card"><form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+<input type="hidden" name="form-name" value="contact"><p style="display:none"><label>Laat dit leeg: <input name="bot-field"></label></p>
+<label>Naam <input name="name" required></label><label>E‑mail <input type="email" name="email" required></label>
+<label>Bericht <textarea name="message" rows="4" required></textarea></label><button class="btn" type="submit">Versturen</button></form></div>
+<div class="card"><h3>Adres</h3><p id="address"></p><div class="small">E‑mail: <a id="email-link" href="#"></a></div></div></div></section>
+<footer class="footer"><div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+<div>© <span id="year"></span> <span id="brand-footer"></span></div><div class="small"><a href="#">Privacy</a> • <a href="#">Algemene voorwaarden</a></div></div></footer>
+<script>
+async function render(){const r=await fetch('/data/site.json',{cache:'no-store'});const d=await r.json();
+id=>document.getElementById(id);
+document.getElementById('brand').textContent=d.site.brand;document.getElementById('brand-footer').textContent=d.site.brand;
+document.getElementById('hero-badge').textContent=d.hero.badge;document.getElementById('hero-title').textContent=d.hero.title;document.getElementById('hero-intro').textContent=d.hero.intro;
+document.getElementById('hero-image').src=d.hero.heroImage;
+function L(id,arr){const u=document.getElementById(id);u.innerHTML='';arr.forEach(t=>{const li=document.createElement('li');li.textContent=t;u.appendChild(li);});}
+L('feat-slaapkamers',d.features.slaapkamers);L('feat-buiten',d.features.buiten);L('feat-praktisch',d.features.praktisch);L('prijzen-lijst',d.prijzen.regels);L('huisregels',d.huisregels);
+document.getElementById('prijzen-note').textContent=d.prijzen.note;document.getElementById('omgeving-intro').textContent=d.omgeving.intro;
+const op=document.getElementById('omgeving-punten');op.innerHTML='';d.omgeving.punten.forEach(p=>{const li=document.createElement('li');li.textContent=p;op.appendChild(li);});
+document.getElementById('map-embed').src=d.omgeving.mapsEmbed;
+document.getElementById('address').textContent=d.site.address;const el=document.getElementById('email-link');el.textContent=d.site.contactEmail;el.href='mailto:'+d.site.contactEmail;
+document.getElementById('year').textContent=new Date().getFullYear();
+const gal=document.getElementById('gallery');gal.innerHTML='';d.gallery.forEach(g=>{const img=document.createElement('img');img.src=g.src;img.alt=g.alt;gal.appendChild(img);});}
+render();
+</script></body></html>
