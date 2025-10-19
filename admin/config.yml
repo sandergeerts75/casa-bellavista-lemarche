@@ -6,59 +6,80 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "site"
+  - name: "content"
     label: "Website-inhoud"
     files:
       - file: "data/site.json"
         label: "Algemene inhoud"
         name: "sitejson"
+        format: "json"
         fields:
-          - {label: "Merknaam", name: "site.brand", widget: "string"}
-          - {label: "Primaire domein", name: "site.primaryDomain", widget: "string"}
-          - {label: "Telefoon", name: "site.contactPhone", widget: "string", required: false}
-          - {label: "E‑mail (website)", name: "site.contactEmail", widget: "string"}
-          - {label: "Doorsturen naar", name: "site.forwardTo", widget: "string"}
-          - {label: "Adres", name: "site.address", widget: "text"}
+          - label: "Site"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Merknaam", name: "brand", widget: "string" }
+              - { label: "Primaire domein", name: "primaryDomain", widget: "string" }
+              - { label: "Telefoon", name: "contactPhone", widget: "string", required: false }
+              - { label: "E-mail (website)", name: "contactEmail", widget: "string" }
+              - { label: "Doorsturen naar", name: "forwardTo", widget: "string" }
+              - { label: "Adres", name: "address", widget: "text" }
 
-          - {label: "Badge", name: "hero.badge", widget: "string"}
-          - {label: "Hero titel", name: "hero.title", widget: "string"}
-          - {label: "Intro", name: "hero.intro", widget: "text"}
-          - {label: "Hero afbeelding", name: "hero.heroImage", widget: "image"}
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge", name: "badge", widget: "string" }
+              - { label: "Hero titel", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Hero afbeelding", name: "heroImage", widget: "image" }
 
-          - label: "Features: slaapkamers"
-            name: "features.slaapkamers"
-            widget: "list"
-            field: {label: Punt, name: item, widget: string}
-          - label: "Features: buiten"
-            name: "features.buiten"
-            widget: "list"
-            field: {label: Punt, name: item, widget: string}
-          - label: "Features: praktisch"
-            name: "features.praktisch"
-            widget: "list"
-            field: {label: Punt, name: item, widget: string}
+          - label: "Features"
+            name: "features"
+            widget: "object"
+            fields:
+              - label: "Slaapkamers"
+                name: "slaapkamers"
+                widget: "list"
+                field: { label: "Punt", name: "item", widget: "string" }
+              - label: "Buiten"
+                name: "buiten"
+                widget: "list"
+                field: { label: "Punt", name: "item", widget: "string" }
+              - label: "Praktisch"
+                name: "praktisch"
+                widget: "list"
+                field: { label: "Punt", name: "item", widget: "string" }
 
           - label: "Galerij"
             name: "gallery"
             widget: "list"
             fields:
-              - {label: "Afbeelding", name: "src", widget: "image"}
-              - {label: "Alt-tekst", name: "alt", widget: "string"}
+              - { label: "Afbeelding", name: "src", widget: "image" }
+              - { label: "Alt-tekst", name: "alt", widget: "string" }
 
-          - {label: "Omgeving intro", name: "omgeving.intro", widget: "text"}
-          - label: "Omgeving punten"
-            name: "omgeving.punten"
-            widget: "list"
-            field: {label: Punt, name: item, widget: string}
-          - {label: "Google Maps embed URL", name: "omgeving.mapsEmbed", widget: "string"}
+          - label: "Omgeving"
+            name: "omgeving"
+            widget: "object"
+            fields:
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Punten"
+                name: "punten"
+                widget: "list"
+                field: { label: "Punt", name: "item", widget: "string" }
+              - { label: "Google Maps embed URL", name: "mapsEmbed", widget: "string" }
 
           - label: "Prijzen"
-            name: "prijzen.regels"
-            widget: "list"
-            field: {label: Regel, name: item, widget: string}
-          - {label: "Prijsnotitie", name: "prijzen.note", widget: "string"}
+            name: "prijzen"
+            widget: "object"
+            fields:
+              - label: "Regels"
+                name: "regels"
+                widget: "list"
+                field: { label: "Regel", name: "item", widget: "string" }
+              - { label: "Prijsnotitie", name: "note", widget: "string" }
 
           - label: "Huisregels"
             name: "huisregels"
             widget: "list"
-            field: {label: Regel, name: item, widget: "string"}
+            field: { label: "Regel", name: "item", widget: "string" }
