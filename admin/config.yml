@@ -5,15 +5,162 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
+# (optioneel) Zet dit aan als je eerst 'Draft → Review → Publish' wilt
+# publish_mode: editorial_workflow
+
 collections:
-  - name: "settings"
-    label: "Site instellingen"
+  # 1) Algemene site-instellingen
+  - name: "site"
+    label: "Site-instellingen"
     files:
       - file: "data/site.json"
-        label: "Site"
-        name: "site"
+        label: "Website-instellingen"
+        name: "settings"
         format: "json"
         fields:
-          - { label: "Merknaam", name: "brand", widget: "string", required: false }
-          - { label: "E-mail (website)", name: "contactEmail", widget: "string", required: false }
-          - { label: "Primaire domein", name: "primaryDomain", widget: "string", required: false }
+          - { label: "Merknaam / sitenaam", name: "brand", widget: "string" }
+          - { label: "Primaire domein (zonder https)", name: "primaryDomain", widget: "string", required: false }
+          - { label: "E-mail (website)", name: "contactEmail", widget: "string" }
+          - { label: "Telefoon", name: "contactPhone", widget: "string", required: false }
+          - { label: "Doorsturen naar (e-mail router)", name: "forwardTo", widget: "string", required: false }
+          - { label: "Adres (regel)", name: "address", widget: "string", required: false }
+
+  # 2) Hero-blok op de homepage
+  - name: "hero"
+    label: "Hero"
+    files:
+      - file: "data/hero.json"
+        label: "Hero"
+        name: "hero"
+        format: "json"
+        fields:
+          - { label: "Badge / Nieuwtje", name: "badge", widget: "string", required: false, default: "Nieuw: groot zwembad" }
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Subtitel / intro", name: "subtitle", widget: "text" }
+          - { label: "CTA-knop 1 (tekst)", name: "ctaAvailLabel", widget: "string", default: "Check beschikbaarheid" }
+          - { label: "CTA-knop 2 (tekst)", name: "ctaPhotosLabel", widget: "string", default: "Bekijk foto's" }
+          - { label: "Hero-afbeelding", name: "image", widget: "image", allow_multiple: false }
+
+  # 3) Fotogalerij
+  - name: "gallery"
+    label: "Foto’s"
+    files:
+      - file: "data/gallery.json"
+        label: "Galerij"
+        name: "gallery"
+        format: "json"
+        fields:
+          - label: "Foto’s"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Afbeelding", name: "src", widget: "image" }
+              - { label: "Bijschrift", name: "caption", widget: "string", required: false }
+
+  # 4) Het huis (secties & highlights)
+  - name: "house"
+    label: "Het huis"
+    files:
+      - file: "data/house.json"
+        label: "Het huis"
+        name: "house"
+        format: "json"
+        fields:
+          - { label: "Ligging / 1-zin (bijv. 'Vrij gelegen...')", name: "lead", widget: "text", required: false }
+          - { label: "Aantal slaapkamers", name: "bedrooms", widget: "number", required: false, value_type: "int" }
+          - { label: "Max. gasten", name: "maxGuests", widget: "number", required: false, value_type: "int" }
+          - { label: "Strandafstand (tekst)", name: "beachDistance", widget: "string", required: false }
+          - label: "Slapen (puntenlijst)"
+            name: "sleeping"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Buiten (puntenlijst)"
+            name: "outdoor"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Praktisch (puntenlijst)"
+            name: "practical"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Extra kenmerken"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Omschrijving", name: "text", widget: "text", required: false }
+              - { label: "Afbeelding", name: "image", widget: "image", required: false }
+
+  # 5) Omgeving
+  - name: "omgeving"
+    label: "Omgeving"
+    files:
+      - file: "data/omgeving.json"
+        label: "Omgeving"
+        name: "omgeving"
+        format: "json"
+        fields:
+          - { label: "Intro", name: "intro", widget: "text", required: false }
+          - label: "Highlights"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "text", widget: "text" }
+              - { label: "Afbeelding", name: "image", widget: "image", required: false }
+
+  # 6) Prijzen
+  - name: "prices"
+    label: "Prijzen"
+    files:
+      - file: "data/prices.json"
+        label: "Prijzen"
+        name: "prices"
+        format: "json"
+        fields:
+          - label: "Seizoenen / periodes"
+            name: "periods"
+            widget: "list"
+            fields:
+              - { label: "Label (bijv. Hoogseizoen)", name: "label", widget: "string" }
+              - { label: "Startdatum", name: "start", widget: "datetime", time_format: false }
+              - { label: "Einddatum", name: "end", widget: "datetime", time_format: false }
+              - { label: "Weekprijs (€)", name: "weekly", widget: "number", value_type: "float", required: false }
+              - { label: "Nachtprijs (€)", name: "nightly", widget: "number", value_type: "float", required: false }
+              - { label: "Min. nachten", name: "minNights", widget: "number", value_type: "int", required: false }
+          - { label: "Schoonmaakkosten (€)", name: "cleaningFee", widget: "number", value_type: "float", required: false }
+          - { label: "Borg (€)", name: "deposit", widget: "number", value_type: "float", required: false }
+          - { label: "Inclusief / extra info", name: "notes", widget: "text", required: false }
+
+  # 7) Contact
+  - name: "contact"
+    label: "Contact"
+    files:
+      - file: "data/contact.json"
+        label: "Contact"
+        name: "contact"
+        format: "json"
+        fields:
+          - { label: "Intro", name: "intro", widget: "text", required: false }
+          - { label: "E-mail (formulier-doel)", name: "emailTo", widget: "string" }
+          - { label: "Telefoon", name: "phone", widget: "string", required: false }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
+          - { label: "Bedankt-tekst (na verzenden)", name: "thankYou", widget: "text", required: false }
+          - { label: "Adres", name: "address", widget: "string", required: false }
+          - { label: "Google Maps embed-URL", name: "mapEmbed", widget: "string", required: false }
+
+  # 8) SEO / Social
+  - name: "seo"
+    label: "SEO / Social"
+    files:
+      - file: "data/seo.json"
+        label: "SEO-instellingen"
+        name: "seo"
+        format: "json"
+        fields:
+          - { label: "Site-titel (SEO)", name: "siteTitle", widget: "string" }
+          - { label: "Meta-description", name: "siteDescription", widget: "text" }
+          - { label: "Social afbeelding (Open Graph)", name: "socialImage", widget: "image", required: false }
+          - label: "Trefwoorden"
+            name: "keywords"
+            widget: "list"
+            field: { label: "Trefwoord", name: "tag", widget: "string" }
